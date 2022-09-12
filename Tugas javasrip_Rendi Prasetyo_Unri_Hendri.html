@@ -1,0 +1,58 @@
+<script language="javascript">
+  /* 
+    Diketahui:
+    pegawai: Ridwan
+    jabatan: manager
+    status: menikah
+    Tugas:
+    Cetak Data Pegawai berbentuk tabel:
+    Judul Kolom gunakan thead
+    Data2 gunakan tbody
+    Nama Pegawai, Jabatan, Status,
+    Gaji Pokok(if): Manager=>15 jt, Asisten Manager=>10 jt, Staff=>5 jt
+    Tunjangan Jabatan: 15% dari gapok
+    BPJS: 10% dari gapok
+    Tunjangan Keluarga (ternary): dilihat dari status yg sudah menikah => 20% dari gapok
+    Total Gaji: jumlahlahkan seluruh element gaji (gunakan tfoot)
+  */
+  
+  //data pegawai 
+  var nama = "Ridwan";
+  var jabatan = "Manager";
+  var status = "menikah";
+  let gakok = "";
+  
+  //gaji pokok
+  if(jabatan == "Manager"){
+    gakok = 15000000;
+  }else if(jabatan == "Asisten Manager"){
+    gakok = 10000000;
+  }else if(jabatan == "Staff"){
+    gakok = 5000000;
+  }else{
+    gakok = 0;
+  }
+  //tunjangan jabatan
+  let tunba = 0.15 * gakok;
+  //bpjs 
+  let bpjs = 0.1 * gakok;
+  //tunjangan keluarga (ternary)
+  let tunar = (status == "menikah") ? 0.2 * gakok : 0;
+  //jumlah gaji
+  let total = gakok + tunba + bpjs + tunar;
+  
+  // hasil
+  document.write(
+    "<p> Nama Pegawai: " + nama + "</p>" + 
+    "<p> Jabatan: " + jabatan + "</p>" + 
+    "<p> Status: " + status + "</p>" + 
+    "<br /> <table align='center' border='1' cellpadding='10' cellspacing='0' width='60%'>" + 
+    "<thead>" + "<tr bgcolor='red'>" + "<th>Data Gaji</th>" + "<th>Nominal Gaji</th>" + "</tr>" + "</thead>" +
+    "<tbody>" + "<tr>" + "<td>Gaji pokok</td>" + "<td>" + gakok + "</td>" + "</tr>" + 
+    "<tr>" + "<td>Tunjangan Jabatan</td>" + "<td>" + tunba + "</td>" + "</tr>" + 
+    "<tr>" + "<td>BPJS</td>" + "<td>" + bpjs + "</td>" + "</tr>" + 
+    "<tr>" + "<td>Tunjangan Keluarga</td>" + "<td>" + tunar + "</td>" + "</tr>" + 
+    "<tfoot>" + "<tr bgcolor='red'>" + "<th>Jumlah</th>" + "<td>" + total + "</td>" + "</tr>" + "</tfoot>" +
+    "</table>"
+    )
+</script>
